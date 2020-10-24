@@ -74,4 +74,19 @@ Additional:
 - Security Control Examples: Manadtory Vacation, Job Rotation, Multi-Person Control, Separation of duties, Principal of least priviledge
 
 ## Governance
-- 
+- Governance: how to conduct IT security
+- PCI-DSS
+- Laws & Regulations
+- Standards
+- Best Practices
+- Common Sense
+- Acceptable Use Policy
+- Organizational Standard
+- Security Controls are in Place
+- Procedure
+
+**Security Controls**  
+|------------------------------|  
+|----| Laws & Regulations |----|  
+|----| Common Sense |--------|  
+| 
