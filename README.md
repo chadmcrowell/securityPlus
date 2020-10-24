@@ -1,5 +1,8 @@
 # Security+ Exam
 
+[![hackmd-github-sync-badge](https://hackmd.io/EfVD8iqVTlmv0RCmuEDHuw/badge)](https://hackmd.io/EfVD8iqVTlmv0RCmuEDHuw)
+
+
 ###### tags: `Security+`
 
 ## The Goal of Security
