@@ -90,13 +90,13 @@ Additional:
 
 ---
 **Security Controls**  
-|------------------------------|  
-|----| Laws & Regulations |----|  
-|----| Common Sense |--------|  
-|----| Best Practice |---------|  
-|------------------------------|  
-|----Policies--------------|  
-|----Standards------------|  
+
+- Policies
+- Standards
+  - Laws & Regulations
+  - Common Sense
+  - Best Practice
+
 **Procedures**
 
 ---
