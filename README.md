@@ -1,32 +1,32 @@
 # Security+ Exam
 
-[![hackmd-github-sync-badge](https://hackmd.io/EfVD8iqVTlmv0RCmuEDHuw/badge)](https://hackmd.io/EfVD8iqVTlmv0RCmuEDHuw)
-
-
-###### tags: `Security+`
-
 ## The Goal of Security
+
 CIA:
+
 - Confidentiality
 - Integrity
 - Availability
 
 Additional:
+
 - Auditing
 - Accountability
 - Non-repudiation
 
 ## Risk
+
 - Threats exploit vulnerabilities to harm assets
 - Assets can have vulnerabilities
 - Use SP 800-30 as a part of risk assessment
 
 ## Threats
+
 - Threat agent
 - Threat Actor
-    - TA can be internal or external
-    - depends on the intent
-    - do they have open source intelligence?
+  - TA can be internal or external
+  - depends on the intent
+  - do they have open source intelligence?
 - Script Kiddies
 - Hacktivists
 - Organized Crime
@@ -35,45 +35,48 @@ Additional:
 - Insiders: anyone with access to the assets (customers and employees)
 
 ##  Risk Assessment
+
 - Vulnerability Assessment
-    - Pen Testing
+  - Pen Testing
 - Threat Assessment
-    - Adversarial
-    - Accidental
-    - Structureal
-    - Environmental
+  - Adversarial
+  - Accidental
+  - Structureal
+  - Environmental
 - Risk Response
-    - Mitigation
-    - Transferrence (using a cloud service instead)
-    - Risk Acceptance (fixing could be too expensive)
-    - Avoidance
+  - Mitigation
+  - Transferrence (using a cloud service instead)
+  - Risk Acceptance (fixing could be too expensive)
+  - Avoidance
 
 ## Risk Management
+
 - Framework: Process for risk mgmt
-    - NIST Risk Management Framework Special Publication 800-37
-        - [link](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final)
-    - ISACA Risk IT Framework
-        - [link](https://www.isaca.org/why-isaca/about-us/newsroom/press-releases/2020/isacas-risk-it-framework-offers-a-structured-methodology)
+  - NIST Risk Management Framework Special Publication 800-37
+    - [link](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final)
+  - ISACA Risk IT Framework
+    - [link](https://www.isaca.org/why-isaca/about-us/newsroom/press-releases/2020/isacas-risk-it-framework-offers-a-structured-methodology)
 - Benchmark
 - Secure Configuration Guides
-    - Platform
-    - Web Server
-    - Operating System
-    - Network Infra Device
-    - General Purpose Guides (general server security)
+  - Platform
+  - Web Server
+  - Operating System
+  - Network Infra Device
+  - General Purpose Guides (general server security)
 - Security Control: how do you secure it?
-    - Administrative/mgmt Control
-    - Technical Control
-    - Physical Control
-    - Security Control
-        - Deterrant
-        - Preventative
-        - Detective
-        - Corrective
-        - Compensation
+  - Administrative/mgmt Control
+  - Technical Control
+  - Physical Control
+  - Security Control
+    - Deterrant
+    - Preventative
+    - Detective
+    - Corrective
+    - Compensation
 - Security Control Examples: Manadtory Vacation, Job Rotation, Multi-Person Control, Separation of duties, Principal of least priviledge
 
 ## Governance
+
 - Governance: how to conduct IT security
 - PCI-DSS
 - Laws & Regulations
@@ -85,8 +88,191 @@ Additional:
 - Security Controls are in Place
 - Procedure
 
+---
 **Security Controls**  
 |------------------------------|  
 |----| Laws & Regulations |----|  
 |----| Common Sense |--------|  
-| 
+|----| Best Practice |---------|  
+|------------------------------|  
+|----Policies--------------|  
+|----Standards------------|  
+**Procedures**
+
+---
+
+### Security Policies
+
+- Acceptable Use Policy: what you can and can't do on computer and internet
+- Data Sensitvity & Classification
+- Access Control Policy: what do you have access to?
+- Password Policy
+- Care & Use of Equipment (abuse prevention)
+- Privacy Policy (customer and in house)
+- Personnel Policy
+
+### Frameworks
+
+- Regulatory or non-regulatory
+- International standards
+- [NIST SP800-37](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final)
+- ISACA IT Infrastructure
+- ISO 27000
+
+**NIST Risk Management Framework**
+
+- Categorize
+  - Organize workflows and processes
+- Select
+  - Ideas for implementing best practices and controls
+- Implement
+  - Take the ideas and apply them
+- Assess
+  - Testing and calculating the impact
+- Authorize
+  - Sign-off
+- Monitor
+  - Watch and observe good/bad
+
+### Quantitative Risk Calculations
+
+- Asset value (cost to install/maintain and item itself)
+- Exposure Factor (% of an asset that's lost as a result of an incident)
+  - if datacenter floods with partial damage to equipment, `exposure factor = .75`
+  - if all assets are damaged from flood, `exposure factor = 1`
+- Single Loss Expentency (Asset value times exposure factor)
+  - if router=`$5000`, and `exposure factor=1`, then `SLE=5000`
+- ARO (Annualized Rate of Occurence)
+  - if chance of flooding = 20 (flood 1 every 20 years), then ARO=.05 (1/20)
+- Annualized Loss Expectancy (ALE)
+  - SLE times ARO ($250)
+- Mean Time to Repair (MTTR)
+  - the time between when an asset fails (e.g. router) and when it is repaired
+- Mean time to Failure (MTTF)
+  - the time between when an asset is working, to when it fails
+- Mean time between failure (MTBF)
+  - the time between when an asset first fails, to when it's repaired then fails again
+
+### Business Impact Analysis
+
+- What's the impact on your business if failure occurs (e.g. lose internet)
+- Determine Mission Processes (determine what's mission critical)
+- Identify Critical Systems (servers and other important assets)
+- Single Point-of-failure (one item that, if fails, causes catestrophic failure)
+- Identify resource requirements (what do I need to get mission critical stuff up and running)
+- Identify recovery priorities (if everything goes down, what steps do I need to follow to get back up)
+
+**IMPACT**
+
+- Property
+- People (Safety & Life)
+- Finance (Credit, cash flow, accounts receivable)
+- Reputation
+
+**Privacy Impact Assessment**
+
+- Determine the impact of our privacy getting out
+
+**Privacy Threshold Assessment**
+
+- What types of privacy info is out there
+
+**Recovery Time Objective (RTO)**
+
+- Minimum time to restore critical systems
+- How long can this thing be down before we're in trouble
+
+**Recovery Point Objective (RPO)**
+
+- Maximum amount of data can be lost (in days)
+
+### Organizing Data
+
+- Data Sensitivity/Labeling
+  - Public (no restrictions)
+  - Confidential (limited access to you only)
+    - Private (private to yourself)
+  - Personally Identifiable Information (PII)
+    - Proprietory (ketchup recipe)
+    - Private Health Information (PHI)
+  - Health Insurance Portability and Accountability (HIPPA)
+- Data Roles
+  - Owner (who's reposible for data)
+  - Steward/Custodian (maintain the integrity of data)
+  - Privacy Officer (who adheres to data privacy and procedures)
+- Data Users
+  - Standard Users: assigned just enough to perform the task
+  - Privileged Users: increased access and control
+  - Executive Users: sets policies and incident reponse actions
+  - System Admin: sets permissions for others
+  - Data/System Owner: all legal responsibility
+
+### Security Training
+
+- Onboarding
+  - Background check
+  - Non-disclosure agreement
+  - Standard operating procedure
+  - rules of behavior
+  - Specialized issues
+  - general procedure policy
+- Offboarding
+  - disable account
+  - return credentials
+  - exit interview
+  - knowledge transfer
+- Personally Identifiable Information (PII)
+  - NIST Guide to protecting PII
+    - Information Needed:
+      - Full name
+      - home address
+      - email address
+      - national identification number
+      - passport number
+      - vehicle registration plate number
+      - driver's license number
+      - face, fingerprints, or handwriting
+      - credit card numbers
+      - digital identity
+      - date of birth
+- Personnel Management Control
+  - Mandatory vacations
+  - Job Rotation
+  - Separation of duties
+- Role-based Data Controls
+  - System Owner
+  - System Administrator
+  - Data Owner
+  - User
+  - Privileged User
+  - Executive User
+
+### Third Party Agreements
+
+- Business Partners Agreement (BPA)
+  - Primary Entities
+  - Time Frame
+  - Financial issues
+  - Management
+- Service Level Agreement (SLA)
+  - Service to be provided
+  - Minimum up-time
+  - Response Time (contacts)
+  - Start and end date
+- Interconnection Security Agreement (ISA)
+  - Ex. NIST 800-47
+  - Statement of requirements
+  - System security considerations
+  - Topological drawing
+  - Signature authority
+- Memorandum of Understanding/Agreement (MOA)
+  - Purpose of interconnection
+  - Relevant authorities
+  - Specify the responsibilities
+  - Define the terms of agreement
+  - Terminating/reauthorizing
+
+## Cryptography
+
+**Obfuscation:** Take something (like a word) that's scrambled so it doesn't make sense (confusion or diffusion)
+
