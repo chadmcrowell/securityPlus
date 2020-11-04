@@ -14,13 +14,13 @@ Additional:
 - Accountability
 - Non-repudiation
 
-## Risk
+## Risk Management
 
 - Threats exploit vulnerabilities to harm assets
 - Assets can have vulnerabilities
 - Use SP 800-30 as a part of risk assessment
 
-## Threats
+### Threats
 
 - Threat agent
 - Threat Actor
@@ -34,7 +34,7 @@ Additional:
 - Advanced Persistent Threat (APT)
 - Insiders: anyone with access to the assets (customers and employees)
 
-##  Risk Assessment
+###  Risk Assessment
 
 - Vulnerability Assessment
   - Pen Testing
@@ -49,7 +49,7 @@ Additional:
   - Risk Acceptance (fixing could be too expensive)
   - Avoidance
 
-## Risk Management
+### Risk Management
 
 - Framework: Process for risk mgmt
   - NIST Risk Management Framework Special Publication 800-37
@@ -75,7 +75,7 @@ Additional:
     - Compensation
 - Security Control Examples: Manadtory Vacation, Job Rotation, Multi-Person Control, Separation of duties, Principal of least priviledge
 
-## Governance
+### Governance
 
 - Governance: how to conduct IT security
 - PCI-DSS
@@ -345,6 +345,7 @@ Additional:
 ### Diffie-Hellman
 
 - Key Exchange Protocol
+- Low overhead: two parties need the same session key
 - Modular arithmetic
 - Diffie-hellman groups
 - elliptic curve diffie-hellmen
@@ -393,3 +394,267 @@ Additional:
 ### Steganography
 
 - hiding data within other data
+
+### Certificates and Trust
+
+- public key with hash and encryption of web page (digital signature)
+- digital signature can be spoofed (so, bring in a 3rd party for another signature)
+- digital certificate (inside certificate is public key, my signature and 3rd party signature)
+- unsigned certificates
+- web of trust
+  - a lot of people who trust each other
+  - requires a lot of maintenance
+- public key infrastructure (PKI)
+  - top of heiracrchy is the certificate authority
+  - intermediate CA
+  - root servers
+
+### Public Key Infrastructure (PKI)
+
+- Certificate authority (verisign)
+- Root certificate system
+  - designated intermediary
+  - certificate authorities
+- PKCS
+  - standard for PKI system
+  - with or without private certificate
+  - cryptographic message syntax standard: PKCS #7 (.P7B) without private certificate
+  - personal information exchange - PKCS #12 (.PFX) with private key
+  - **PKCS-7** is a way to store certificates as individiual files
+  - **PKCS-12** stores the certificates and the private keys as a package
+- CRL Distribution Points
+  - Certificate relocation list
+  - takes a long time to respond to bad certificate
+- Online certificate status protocol (OCSP)
+  - real time check for certificate validation
+  - Replaces CRL
+- X.509
+  - how to access database
+  - OU, O, C
+- Certification Path
+  - root certificate, then under it is intermediate certificate (may be many)
+
+### Cryptographic Attacks
+
+- generate a hash and compare
+- FreeSSH
+- brute force attack: comparing hashes to find a match
+- must have long passwords to prevent brute force attacks
+- Dictionary attack: start with a word (feeding in a dictionary) and trying capitals, numbers, etc.
+- Rainbow-table attack
+- Salt: arbitrary value added to the end of password
+- Key stretching: attaches other values to your password
+  - bcrypt
+  - PBKDF2
+
+## Identity and Access Management
+
+- Identifcation
+- Authorization
+- Authentication
+
+### Identification
+
+- Something you know
+  - CAPTCHA
+  - password
+  - PIN
+  - Security questions
+- Something you have
+  - Smart card
+  - RSA key/token
+- Something about you
+  - finger print (inheritence factor)
+  - facial recognition
+- Something you do
+  - rhythm of your typing
+- Somewhere you are
+  - entering zip code for gas
+- Federated trust
+  - windows active directory
+  - Don't need username and password
+- Multi-factor authentication
+
+### Authorization Concepts
+
+- Permissions
+  - What can you do
+  - admin assigns permissions
+- Rights/Priviledges
+  - assign to systems as a whole
+- Least priviledge
+- Separation of duties
+
+### Access Control List
+
+- Authorization Models
+  - Mandatory Access Control (based on data labels)
+  - Discretionary Access Control
+  - Roles
+- Role-based access control
+- Implicit deny
+
+### Password Security
+
+- security policy
+  - complexity
+  - expiration
+  - history
+- Example: Windows local security policy
+- security policy for AD: Group Policy Objects
+
+### Linux File Permissions
+
+- Owner, Group, Everyone (other)
+- read, write, execute
+- execute for a directory means you can change into it and make it your home
+- chmod (4=r, w=2, x=1)
+- chown (user, group)
+- passwd
+
+### Windows File Permissions
+
+- NTFS permissions
+  - Full control
+  - modify
+  - read/execute
+  - list folders contents
+  - read
+  - write
+- Inheritance
+- Deny is stronger than allow
+- Copying from NTFS drive to different NTFS drive
+  - loses NTFS permissions
+- Copying from NTFS drive to another folder on same drive
+  - keeps NTFS permissions
+
+### User Account Management
+
+- Continuous Access Monitoring
+  - track logging in/off
+  - track file access
+- Shared accounts = bad
+- Multiple accounts
+  - diff usernames/passwords
+  - diff groups
+  - use least priviledge
+  - log activity
+- Default accounts
+  - use dedicated service accounts
+
+
+### AAA
+
+- Authentication, authorization, accounting
+- RADIUS
+  - dial-in networking
+  - RADIUS server
+  - RADIUS client
+  - RADIUS supplicant (system trying to authenticate)
+  - used in wireless auth
+  - uses up to 4 different ports (1812, 1813, 1645, 1646)
+- TACACS+
+  - managing devices
+  - takes care of authorization also
+  - decouples authorization and authentication
+  - uses **TCP port 49**
+- both RADIUS and TACACS is used for auditing
+
+### Authentication Methods
+
+- Password Authentication Protocol (PAP)
+  - send in the clear
+- Challenge-handshake Authentication Protocol (CHAP)
+  - server and client have key
+  - challenge message
+  - creates hash and challenge message over to client
+- NT LAN Manager v2
+  - Two windows systems logging into eachother
+  - challenge messages on each side
+  - message hashed
+- Kerberos
+  - auth to Windows domain controllers
+  - Key distribution center (KDC)
+  - authentication service provides ticket granting ticket (TGT)
+  - TGT also called SID
+  - TGT knows what I'm authorized to do and generates a session key (new session key created each time accessing something)
+- Security Assertion Markup Language (SAML)
+  - used to login to web apps
+- Lightweight Directory Access Protocol (LDAP)
+  - allows one computer to access another computers directory
+  - uses TCP/UDP 389
+
+### Single Sign-On
+
+- LAN uses Windows Active Directory
+  - federated systems (trust)
+  - admin authorizes users
+- SAML
+  - logs into a bunch of devices using identity provider
+  - service provider
+- SSO Circle
+
+## Tools of the Trade
+
+### OS Utilities
+
+- ping -4
+- ping -t
+- netstat -n
+  - Active connections
+- netstat -a
+  - Listening on ports
+- tracert
+- arp
+- ipconfig
+- nslookup
+  - `server 8.8.8.8`
+- dig
+  - query certain records
+  - `dig mx google.com`
+- netcat
+  - open and listen on ports
+  - `sudo netcat -l 231`
+  - open a port as a client
+  - banner grabbing
+  - tool for agressive reconnaissance
+
+### Network Scanners
+
+- Nmap
+  - `nmap -v -sn 192.168.4.0/24`
+  - `nmap -v -A scanme.nmap.org`
+- Zenmap
+  - GUI for Nmap
+- advanced port scanner
+- looking for open ports, protocols hardware, and rogue systems
+- wiresharek SB network inventory
+
+### Protocol Analyzers
+
+- sniffer (PCAP)
+- protocol analyzer (wireshark)
+- tcpdump
+- broadcast storm
+
+### SNMP
+
+- Simple Network Management Protocol (SNMP)
+- Agent (UDP 161/TLS 10161)
+- SNMP manager (Network management station)
+- Network management station (NMS)
+- Management information base (MIB)
+- query you're printers MIB
+- send a GET
+- setup a trap on the device (SNMP trap)
+- Walk: SNMPWalk
+- version: 1, 2, 3
+- SNMP v3 uses TLS encryption
+- `snmp server community totalhome RO`
+- An SNMP Community is an organization of managed devices (e.g. totalhome)
+- Cacti 
+- Types of NMS: Nagios, Zaabbix and Spiceworks
+
+### Logs
+
+- 
