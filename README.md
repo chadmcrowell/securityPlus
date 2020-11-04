@@ -91,8 +91,7 @@ Additional:
 ---
 **Security Controls**  
 
-- Policies
-- Standards
+- Policies & Standards
   - Laws & Regulations
   - Common Sense
   - Best Practice
@@ -276,3 +275,121 @@ Additional:
 
 **Obfuscation:** Take something (like a word) that's scrambled so it doesn't make sense (confusion or diffusion)
 
+- Caesar cipher
+- Vigenere cipher
+
+### Cryptograhic Methods
+
+- Symmetric Encryption
+- Asymmetric Encryption
+  - used to send a secure session key
+  - public key only used to encrypt
+  - private key only used to decrypt
+- Session Key (symmetric key)
+- Ephemeral Key
+  - Temporary 
+  - Provides perfect forward secrecy (if cracked today, tomorrow it wouldn't work)
+- In-band
+- Out-of-band
+
+### Symmetric Cryptosystems
+
+- Symmetric key algorithm
+- Symmetric block encryption
+  - Data Encryption Standard (DES)
+  - Feistel Function
+  - DES is a short key
+  - Blowfish
+  - 3DES
+- Blowfish
+  - 64 bit block size
+  - 16 rounds
+  - Key size: 32-448 bits
+- 3DES
+  - Block cipher
+  - 64-bit Block size
+  - 16 rounds
+  - Key size: 56 bit`x`3
+- Advanced Encryption Standard (AES)
+  - Block cipher
+  - 128-bit block size
+  - Key size: 128, 192, or 256 bits
+  - Rounds: 10, 12, or 14
+- RC4 Streaming Cipher
+  - Streaming cipher
+  - 1 bit at a time
+  - 1 round
+  - Key Size: 40-2048 bits
+
+### Symetric Block Modes
+
+- Electronic Code Book (ECB) - nobody uses this anymore
+- Block modes
+  - Cipher block chaining (CBC)
+  - Cipher feedback (CFB)
+  - Output feedback
+  - Counter (CTR)
+
+### RSA Cryptosystems
+
+- Asymmetric Encryption
+- Public/Private Key
+- RSA
+  - Asymmetric (key pair)
+  - at least 2048 bit key
+- ECC (Elliptic Curve Cryptography)
+  - Elliptic curve formula
+  - generate key pair fast
+  - Smaller key
+
+### Diffie-Hellman
+
+- Key Exchange Protocol
+- Modular arithmetic
+- Diffie-hellman groups
+- elliptic curve diffie-hellmen
+- can have very large keys
+
+### PGP/GPG
+
+- Random key by encryptor
+- encrypt data using that random key
+- encrypt the key using the receivers public key
+- decrypt by using the private key to get the random key
+- use the random key to decrypt the data
+- PGP certificate
+- Web of trust: certificates trust other certificates
+- OpenPGP
+  - PKI support
+  - S/MIME
+- Symantec
+  - Bitlocker
+  - Filevault
+  - Enterprise soluton
+- ProtonMail (PGP built-in)
+- GPG: GNU Privacy Guard (does file and disk encryption)
+
+### Hashing
+
+- add integrity to data
+- Hashes are one-way
+- will always be the same size
+- Deterministic
+- Hash Types
+  - MD5: 128-bit hash
+  - SHA-1: 160-bit hash
+  - SHA-256
+  - SHA-512
+  - RIPEMD: 128, 160, 256, 320 bit digests
+- used for password storage
+
+### HMAC
+
+- freeformatter.com
+- message integrity
+- requires each side to have the same key
+- based on the standard hashes (MD5, SHA-1, etc.)
+
+### Steganography
+
+- hiding data within other data
