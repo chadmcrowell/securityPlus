@@ -657,4 +657,807 @@ Additional:
 
 ### Logs
 
-- 
+- Non-network logs and network logs
+- Log data should have `event`, `time`, `process/source`, `account`, `event number`, `event description`
+- Operating System Events (Non-network)
+  - Host starting 
+  - Host shutdown 
+  - reboot
+  - service starting, stopping, and failing
+  - Operating system updates
+- Application events (non-network)
+  - Application is installed
+  - Application starts, stops or crashes
+- Security events (non-network)
+  - Logons
+  - Logon successes and failures
+- OS or system level network events **OR** application-level network events
+- Events to the system via network (network)
+  - Remote logons (fail or not)
+- Events on shared applications/resources (network)
+  - Activity on web server
+  - activity on firewall
+- Decentralized vs. centralized logging
+- use SNMP system
+- Monitoring as a Service (MaaS)
+- SYN, SYN/ACK, ACK
+
+## Securing Individual Systems
+
+## Denial of Service
+
+- volume attack
+  - ping flood
+  - UDP flood
+- protocol attack
+  - SYN flood/TCP SYN attack: client sends infinite number of SYN 
+- application attack
+  - Slow loris attack: client starts comms, but never returns response and apache server gets overwhelmed waiting for a response
+  - Aplification attack (smurf attack): sends a ICMP packet to spoof the web server IP. everyone responds to target and floods.
+- Distributed denial-of-service attack
+  - use multiple systems that contain malware (botnet zombie) to attack a single host
+
+## Host Threats
+
+- SPAM
+- PHISHING
+- SPEAR PHISHING: call you out by name
+- SPIM: spam by instant messaging
+- VISHING: using voice to get personal info
+- Click Jacking: click it and move it around and make you click elsewhere
+- Typosquatting: buy domains hoping someone will misspell
+- Domain hijacking
+- Priviledge elevation
+
+### Man-in-the-Middle
+
+- 3rd party interrupting communications
+- Wireless vs. Wired man-in-the-middle
+- for wired, you have to do Spoofing
+- Ettercap with Kali linux to get in the middle
+- ARP poision (also with ettercap)
+- Bluetooth is suseptible
+- NIC is susetible
+- spoof dns address
+- Typosquatting
+- Domain hijacking
+- Manipulating the man-in-the-middle
+  - replay attack: get the login and replay to server
+  - Downgrade attack: if using TLS 1.0, you are targeted
+  - Session Hijacking: inject information in a current session (e.g. Firesheep)
+  
+### System Resiliency
+
+- Scalability (add more servers to feed demand)
+- Elasticity (add more or remove to serve event)
+- Redundancy in different geographic regions
+- non-persistence
+  - snapshot
+  - known state
+  - rollback driver
+  - live CD
+
+### RAID
+
+- RAID 0
+- RAID 1 (mirroring)
+- Parity
+  - RAID 2: parity drive (striped)
+  - RAID 3
+  - RAID 4
+- RAID 5
+  - You can lose one drive, but not two or more
+- RAID 6
+  - min of 4 drives
+  - 2 parity drives
+- Hybrid 
+  - RAID 01
+  - RAID 10: stripe of mirrors
+- Propietary RAID
+  - Synology
+  - Storage spaces
+- increase disk access or help tolerate disk failure
+
+### NAS and SAN
+
+- NAS
+  - FreeNAS
+  - **File-level storage**
+- SAN
+  - **block-level storage**
+  - fibre channel
+  - HBA for fibre
+  - 10Gbps
+- ISCSI
+  - initiator and target
+  - iSCSI initiator
+  - extent
+
+### Physical Hardening
+
+- Removable media controls
+- Data execution prevention (DEP)
+- Disabling port (usb ports)
+
+### RFI, EMI, and ESD
+
+- Electromagnetic interference (EMI)
+- Electrostatic discharge (ESD)
+- Radio frequency interference (RFI)
+
+### Host Hardening
+
+- Disable unnecessary Services
+- Default passwords
+- Disabling unwanted users and groups
+- Patch management
+  - Monitor for available patches
+  - Test patches in sandbox
+  - Evaluate 
+  - Deploy patch (scheduling)
+  - Document
+- Anti-malware
+- Host Firewall
+  - application-level
+  - whitelist/blacklist
+- Intrusion dectection systems
+
+### Data and System Security
+
+- RAID (speed, integrity, inexpensive)
+- Clustering
+- Load-balancing
+- Virtualization
+
+### Disk Encryption
+
+- Slows your system down
+- TPM (Trusted Platform Module)
+- BitLocker
+- FileVault
+  
+### Hardware/Firmware Security
+
+- Full Disk Encryption (FDE)
+- Self-encrypting drive (SED)
+- Secure Boot
+- Hardware root of trust
+- Hardware security module (HSM)
+
+### Secure OS Types
+
+- Server OS
+- Workstations (Desktop)
+- Embedded Systems (appliance)
+- Kiosk
+- Mobile OS
+- Trusted Operating System
+
+### Securing Peripherals
+
+- Wired vs. Wireless
+- Bluetooth devices (blue jacking)
+- Bluesnarfing: stealing data
+- WPS
+- Hidden Wi-Fi
+- SD Devices
+- Displays (monitors) with USB port
+- Rubber duck
+- Avoid backdoors
+- Turn off ports
+- Patch devices
+
+### Malware
+
+- Virus
+- Adware
+- Spyware
+- Trojan horse
+- Remote access trojan
+- Ransomware/Cryptomalware
+- Logic Bomb: program triggered by an event
+- Root Kit: grabs admin priviledge
+- Backdoor
+- Polymorphic malware
+- Armored virus
+- Keylogger
+
+### Analyzing Output
+
+- Anti-malware
+- Host-based firewall
+  - output is access control list
+- File integrity check
+  - systemfilechecker
+- Application whitelist
+
+### IDS and IPS
+
+- Intrusion detection system
+- Intrusion prevention: detects and stops it
+
+### Automation Strategies
+
+- Repetetive
+- Consistent
+- ghost image (template restoration)
+- continuous restoration
+- automatic updates
+- Monitoring application whitelist
+- application development
+- powershell
+
+### Data Destruction
+
+- also called Media sanitation
+- clearing: some internal command to erase
+- wiping: overrites the data
+- purge: destroy it
+- crypto erase: remove encryption
+- destroy: paper, tape, other media
+- burning
+- pulping: add water
+- Shredding
+- Pulverizes
+
+## The Basic LAN
+
+### LAN Review
+
+- Switch: filter by MAC address
+  - VLAN: layer 2 separation
+  - Flood guarding
+  - spanning tree protocol (STP) prevents floods
+- Router: filter by IP address
+  - Layer 3
+  - NAT
+  - Network Firewall
+
+### Network Topologies Review
+
+- LAN
+  - Broadcast domain
+- WAN
+- Metropolitan Area Networkk
+- Campus Area Network
+- TCP/IP
+- Intranet
+- Extranet
+
+### Network Zone Review
+
+- VLAN: multiple broadcast domain
+- DMZ: router to gateway router, inbetween web, file or vpn
+- Wireless: 802.11
+- Guest Network: isolated VLAN
+- Virtualization
+- Airgap: disconnect between networks
+
+### Network Access Controls
+
+- Wireless network
+- remote access
+- VPN
+- Point-to-point protocol
+  - transport layer protocol
+  - PAP: passwords in the clear
+  - CHAP: challenge with password
+- EAP (Extensible authenticaion protocol)
+  - EAP-MD5
+  - EAP-PSK
+  - EAP-TLS
+  - EAP-TTLS
+  - EAP-FAST
+  - PEAP
+- 802.1X
+
+### The Network Firewall
+
+- **Stateful:** block based on behavior
+- **Stateless:** block based on access control list
+- Application-based firewall
+
+### Proxy Servers
+
+- Forward Proxy
+  - client to proxy
+  - dedicated machine
+  - caching and content filtering
+  - transparent proxy
+  - VPN vs. TOR
+- Reverse Proxy
+  - protect(hides) the servers
+  - handle DOS attacks
+  - load balancing
+  - caching
+  - encryption acceleration
+
+### Honeypots
+
+- Emulate any server
+- commonly in DMZ
+- logs everything (keystrokes, etc.)
+- **Honeynet** 
+  - emulate an entire network
+
+### Virtual Private Networks
+
+- Leased T3 Line
+- Endpoints
+- VPN tunnel
+- Remote access VPN
+- Site-to-Site VPN
+- Split vs. Full Tunneling
+  - Full tunnel directs traffic through VPN tunnel
+  - Split tunnel directs some traffic through tunnel and others directly out
+- Protocol to setup the tunnel
+- Protocol to setup encryption
+- PPTP
+- L2TP (Cisco)
+- IPsec
+- SSL/TLS
+- OpenVPN
+
+### IPSec
+
+- Bunch of protocols to secure connections
+- Authentication 
+- Encapsulating Security payload (ESP)
+  - Authentication header (HMAC) provides integrity
+- Transport mode
+- Tunnel Mode
+  - add new ip address
+  - HMAC
+  - used with ESP
+- ISAKMP: creates a security association between two hosts
+- VPNs use IPsec with L2TP
+- RADIUS/TACACS+
+- IPsec with IPv6
+- Encrypting Unsecured Protocols
+
+### NIDS/NIPS
+
+- Network intrusion detection
+- Network intrusion prevention
+  - behavior
+  - signature-based
+  - rule-based
+  - heuristic
+- in-band for NIPS
+- out-of-band is for NIDS
+- Collectors: build up detection logs
+- Correlation engine
+
+### SIEM
+
+- Security Information and Event Management (SIEM)
+- Aggregation: collecting data and storing
+- Normalization
+- Logs
+- WORM (write once read many)
+- Correlation
+- Alerts
+- Triggering
+
+## Beyond the Basic LAN
+
+### Wireless Review
+
+- 802.11 = wireless access point
+- service set identifier (SSID)
+- Basic service set identifier (BSSID)
+- Extended service set identifier (ESSID)
+- WEP can easily be hacked
+- WPA2: 802.11i (802.1x auth)
+  - uses AES encryption
+- TKIP
+- CCMP
+
+### Living in Open Networks
+
+- Session cookie
+- Cookie cadger
+- replay attack (SSL Stripping)
+- HSTS
+- HTTPS everywhere
+
+### Vulnerabilities with Wireless Access Points
+
+- Rogue AP
+- Evil Twin
+- 802.11 jammer
+- Deauthentication Attack (`dauth` commands)
+
+### Cracking 802.11 - WEP
+
+- WEP is oldest 802.11
+- IV attack
+- Aircrack
+- Airmon-ng
+
+### Cracking 802.11 - WPA
+
+- uses 4-way handshake
+- vulnerable to dictionary attack
+
+### Cracking 802.11 - WPS
+
+- Wi-fi protected setup
+- 8 digit key is actually only 7 digits (2^7)
+- Key exchange is the first processed in 4-bit and 3-bit
+- Reaver
+- WPS capable access points can detect an attack and shut off
+
+### Wireless Hardening
+
+- Survey tools
+  - find SSID, MAC address, bands channels and signals
+  - heatmap
+- Maintenance
+  - good documentation for SSIDs, heatmaps, etc.
+- AP isolation - good for public
+- use 802.1x
+- Scanning for rogue APs
+- Wireless intrusion detection system (WIDS)
+- Human training
+
+### Wireless Access Points
+
+- Thick/thin client
+- DBI=signal strength
+- Antenna Types
+- Patch graphic
+- Antenna
+  - Omni
+  - dipole
+  - directional
+  - patch
+- bandwidth, channel and channel bandwidth selection
+
+### Virtualization Basics
+
+- Emulation
+- quick recovery
+
+### Virtual Security
+
+- Type 1 & 2 hypervisor
+- Cloud-based virtualization
+- Network separation
+- virtual threats
+- Security as a Service (SaaS)
+- Cloud access seucurity broker (policy, malware, etc.)
+
+### Containers
+
+- libraries and binaries
+
+### IaaS
+
+- pay for what you use
+
+### PaaS
+
+- access software development platform
+
+### SaaS
+
+- applications via subscription
+
+### Deployment Models
+
+- VDE
+- VDI
+
+### Static Hosts
+
+- single purpose devices 
+- secured using defense in depth concepts
+
+### Mobile Connectivity
+
+- SATCOM
+- Near-field communication (NFC)
+- ANT/ANT+
+- Infrared
+- USB on-the-go
+- Wi-fi and tethering
+- Wi-fi direct
+
+### Deploying Mobile Devices
+
+- mobile device management tools
+- BYOD
+
+### Mobile Enforcement
+
+- sideloading
+- carrier unlocking
+- jailbreaking
+- root access
+- firmware OTA(over the air) updates
+- camera
+- external media
+- GPS tagging
+
+### Mobile Device Management
+
+- Content management
+- geolocation
+- geofencing
+- push notification
+- passwords and pins
+- app management
+- storage segment
+- encryption
+- containerization
+
+### Physical Controls
+
+- Deterrent control: prevent trying to get in
+- preventative physical control (fence)
+- K ratings
+- Mantrap
+- faraday cages
+- Locks
+- detective control (alarm system w/ cameras)
+- compensating controls (temporary fixes to weaknesses)
+
+### HVAC
+
+- heating, ventilating, air conditioning
+- infrared cameras
+- hot & cold aisles
+- contain system
+- remote monitoring
+
+### Fire Supression
+
+- fire extinquisher (class C)
+- FM-200 saves electrical equipment
+
+## Secure Protocols
+
+### Secure Applications and Protocols
+
+- SSH
+- TLS
+
+### Network Models
+
+- OSI model
+  - physical, data link, network, transport, session, presentation, application
+- TCP model
+  - network interface, internet, transport, application
+
+### Know your Protocols - TCP/IP
+
+- IP addressing (IPv4, IPv6)
+- private ipv4 (10, 172-173, 192.168)
+- FE80 link local
+- TCP, UDP, ICMP
+
+### Know your Protocols - Applications
+
+- HTTP 80
+- HTTPS 443
+- Telnet 23
+- SSH 22
+- FTP 20, 21
+- FTP/SSH 22
+- FTPS 20, 21
+- SFTP 22
+- SCP 22
+- TFTP 69
+- SMB 445
+- SMTP 25
+- IMAP 143
+- POP 110
+- DNS 53
+- DHCP 67, 68
+- SNMP 161, 162
+- LDAP 389
+- RDP 3389
+
+### Transport Layer Security (TLS)
+
+- SSL/TLS
+- Symmetric encryption (key exchange)
+- Authentication (RSA cert)
+- HMAC
+
+### Internet Service Hardening
+
+- DNS 53
+- DNSSEC (prevent man-in-the-middle)
+- Secure SMTP 465, 587
+- STARTTLS IMAP/POP 993/995
+
+### Protecting Your Servers
+
+- SSL accelerator
+- DDoS (distributed denial of service) mitigatory tools (alerts)
+
+### Secure Code Development
+
+- Waterfall
+- Agile
+
+### Secure Deployment Concepts
+
+- Compiled vs. runtime code (web)
+- error handling
+- proper input validation
+- normalization (db)
+- stored procedure (db)
+- encrypting code
+- obfuscating code (minify)
+- code reuse (functions)
+- server-side vs. client-side
+- memory management (leaks)
+- third-party libraries
+- Data exposure
+
+### Code Quality and Testing
+
+- static code analyzers
+- dynamic code analysis (fuzzing)
+- staging (sandbox)
+- model verification
+- production
+
+## Testing Your Infrastructure
+
+- Tracert
+- Advanced IP scanner
+- Nmap
+- MBSA (microsoft baseline security analyzer)
+- vulnerability assessment tools (nessus)
+
+### Vulnerability Scanning Assessment
+
+- credential vs. non-credential
+- intrusive vs. non-intrusive
+- compliance (PCIDSS compliance)
+
+### Social Engineering Principles
+
+- Authority
+- Indimidation
+- Consensus
+- Scarcity
+- Familiarity
+- Trust
+- Urgency
+
+### Social Enginerring Attacks
+
+- Physical attacks
+- Virtual attacks
+
+### Attacking Web Sites
+
+- Common log format (CLF)
+- cPanel
+- Cross-site scripting (XSS)
+- XML injections
+
+### Attacking Applications
+
+- Injection attack
+  - code injection
+  - command injection
+  - sql injection (inner join, select from, etc.)
+  - LDAP injection (X.500)
+- Buffer Overflow
+- Integer Overflow
+
+### Exploiting a Target
+
+- Pentesting
+  - discover vulnerabilities
+  - exploit vulnerabilities
+  - authorization
+- Attack model
+  - White box
+  - Black box
+  - Grey box
+- Passive discovery
+- Semi-passive discovery
+- Active discovery
+- Exploit the target
+  - banner grabbing
+  - pivot
+  - persistence
+  - priviledge escalation
+- Armitage
+
+### Vulnerability Impact
+
+- Embedded system
+- lack of vendor support
+- Weak configurations
+- misconfiguration
+- improperly configured account
+- vulnerable business process
+- memory/buffer vulnerability (mem leak, buffer overflow)
+- DLL injection
+- system sprawl
+
+## Dealing with Incidents
+
+## Incident Reponse
+
+- NIST 800-61 Computer Security Incident handling guide
+  - prepare
+  - report
+  - practice scenario
+  - identification
+  - containment
+  - eradication
+  - recovery
+  - documentation
+- incident response plan
+  - CIRT (cyber incident response team): IT security, human resources, legal, public relations
+  - Document types 
+  - Roles & responsibilities
+  - Reporting requirements/escalation
+  - practice
+
+### Digital Forensics
+
+- Incident occurs
+- Legal hold
+- chain of custody
+  - define the evidence
+  - document collection method
+  - date/time collected
+  - persons handling the evidence
+  - function of person handling evidence
+  - location of evidence
+- Order of volitility
+  - Memory
+  - data on disk
+  - Write block (use dd)
+  - remotely logged data
+  - backups (trends)
+- capture system image
+- get network traffic and logs
+- capture video (secuirty cameras)
+- take hashes
+- take screenshots
+- interview witnesses
+- track man hours
+
+### Contigency Planning
+
+- Business continuity
+- evacuation plan
+  - cold site
+  - warm site
+  - hot site
+- internet requirements
+- housing and entertainment
+- Legal issues
+- order of restoration
+  - power
+  - wired LAN
+  - ISP link
+  - active directory/DNS/DHCP
+  - accounting servers
+  - sales and accounting workstations
+  - video production servers
+  - video production workstations
+  - wireless
+  - peripherals
+- Annual exercise
+- Failover
+- Alternative processing sites
+- Alternative business practices
+- After action reports
+
+### Backups
+
+- Backup methods
+- Local/Offsite
+- Cloud Backup
